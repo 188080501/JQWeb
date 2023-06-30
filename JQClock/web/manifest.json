@@ -8,7 +8,7 @@
     "description": "Qt for WebAssembly JQClock",
     "icons": [{
       "src": "favicon.ico",
-      "sizes": "256x256 64x64 48x48 32x32 24x24 16x16",
+      "sizes": "128x128 64x64 48x48 32x32 24x24 16x16",
       "type": "image/x-icon"
     }]
   }
