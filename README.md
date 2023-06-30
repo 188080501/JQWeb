@@ -18,8 +18,14 @@
 
 在线访问地址：https://web.jasonserver.com:10035/JQClock/JQClock.html
 
+![](./doc/JQClock.png)
+
+
 # JQRing
 
 一个旋转的圆圈
 
 在线访问地址：https://web.jasonserver.com:10035/JQRing/JQRing.html
+
+![](./doc/JQRing.png)
+
