@@ -7,8 +7,6 @@ Rectangle {
     height: imageSize
     opacity: 0
     color: "#000e27"
-    layer.enabled: true
-    layer.textureSize: Qt.size( imageSize, imageSize )
 
     property bool lightMode: false
     readonly property int imageSize: 800

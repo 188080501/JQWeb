@@ -4,8 +4,8 @@ import QtQuick.Window
 Window {
     id: window
     visible: true
-    width: 720
-    height: 720
+    width: 800
+    height: 800
     title: "JQRing"
     color: "#000e27"
 
