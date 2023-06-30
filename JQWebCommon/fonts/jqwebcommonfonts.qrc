@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/jqwebcommonfonts">
+        <file>MiSans-Regular.ttf</file>
+        <file>NotoMono.ttf</file>
+    </qresource>
+</RCC>
