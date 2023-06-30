@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Background.webp</file>
+        <file>Ring0.webp</file>
+        <file>Ring1.webp</file>
+        <file>Ring2.webp</file>
+        <file>Ring3.webp</file>
+        <file>Ring4.webp</file>
+        <file>Ring5.webp</file>
+        <file>Ring6.webp</file>
+        <file>Ring7.webp</file>
+        <file>Ring8.webp</file>
+        <file>Ring9.webp</file>
+        <file>Ring10.webp</file>
+        <file>Ring11.webp</file>
+        <file>Ring12.webp</file>
+    </qresource>
+</RCC>

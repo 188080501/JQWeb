@@ -1,0 +1,17 @@
+{
+    "name": "JQClock",
+    "short_name": "JQClock",
+    "start_url": "JQClock.html",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "description": "Qt for WebAssembly JQClock",
+    "icons": [{
+      "src": "favicon.ico",
+      "sizes": "256x256 64x64 48x48 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }],
+    "related_applications": [{
+      "platform": "web"
+    }]
+  }
