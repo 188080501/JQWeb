@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT *= core gui qml quick
+QT *= core gui qml quick quickcontrols2
 
 INCLUDEPATH *= \
     $$PWD/cpp
@@ -16,7 +16,7 @@ RESOURCES *= \
 
 wasm : !isEmpty( PRO_PATH ) {
 
-    equals( QT_VERSION, 6.5.1 ) {
+    versionAtLeast( QT_VERSION, 6.5.0 ) : versionAtMost( QT_VERSION, 6.5.3 ) {
 
         exists( $$PRO_PATH/shell/copy_wasm_release.bat ) : CONFIG( release, debug | release ) {
 

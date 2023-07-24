@@ -12,6 +12,7 @@
 
 * 加了字体文件，保证中文显示正常
 
+
 # JQClock
 
 一个时间显示器，格式为 hh:mm:ss
@@ -19,6 +20,15 @@
 在线访问地址：https://web.jasonserver.com:10035/JQClock/JQClock.html
 
 ![](./doc/JQClock.png)
+
+
+# JQText
+
+文本显示和输入测试
+
+在线访问地址：https://web.jasonserver.com:10035/JQText/JQText.html
+
+![](./doc/JQText.png)
 
 
 # JQRing

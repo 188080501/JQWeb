@@ -1,0 +1,14 @@
+{
+    "name": "JQText",
+    "short_name": "JQText",
+    "start_url": "JQText.html",
+    "display": "standalone",
+    "background_color": "#ededed",
+    "theme_color": "#ededed",
+    "description": "Qt for WebAssembly JQText",
+    "icons": [{
+      "src": "favicon.ico",
+      "sizes": "128x128 64x64 48x48 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }]
+  }
