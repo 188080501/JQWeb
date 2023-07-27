@@ -36,6 +36,7 @@ QString Helper::getWebPrompt(const QString &title, const QString &text)
 #ifdef Q_OS_WASM
     return getWebPrompt2( title.toUtf8().data(), text.toUtf8().data() );
 #else
-    return currentText;
+    Q_UNUSED( title );
+    return text;
 #endif
 }
