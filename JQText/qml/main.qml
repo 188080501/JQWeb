@@ -10,6 +10,7 @@ Window {
     color: "#ededed"
 
     TextArea {
+        id: textArea
         anchors.fill: parent
         anchors.margins: 10
         wrapMode: TextInput.WordWrap
@@ -26,5 +27,20 @@ Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rh
 Qt: " + Helper.versionInfo()
 
         background: Item { }
+    }
+
+    Button {
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        width: 50
+        height: 50
+        visible: Qt.platform.os === "wasm"
+        text: "输入"
+
+        onClicked: {
+            textArea.text = Helper.getWebPrompt( "请输入文本", textArea.text );
+        }
     }
 }

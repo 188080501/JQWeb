@@ -1,5 +1,5 @@
-﻿#ifndef HELPER_HPP_
-#define HELPER_HPP_
+﻿#ifndef HELPER_H_
+#define HELPER_H_
 
 // Qt lib import
 #include <QDebug>
@@ -15,10 +15,9 @@ public:
     virtual ~Helper() override = default;
 
 public slots:
-    QString versionInfo()
-    {
-        return qVersion();
-    }
+    QString versionInfo();
+
+    QString getWebPrompt(const QString &title, const QString &text);
 };
 
-#endif//HELPER_HPP_
+#endif//HELPER_H_
