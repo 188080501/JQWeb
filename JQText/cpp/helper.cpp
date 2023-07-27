@@ -20,7 +20,9 @@ EM_JS(const char*, getWebPrompt2, (const char *titleStr, const char *textStr), {
     var lengthBytes      = lengthBytesUTF8( jstring ) + 1;
     var stringOnWasmHeap = _malloc( lengthBytes );
 
-    return stringToUTF8( jstring, stringOnWasmHeap, lengthBytes );
+    stringToUTF8( jstring, stringOnWasmHeap, lengthBytes );
+
+    return stringOnWasmHeap;
 })
 #endif
 
