@@ -29,18 +29,42 @@ Qt: " + Helper.versionInfo()
         background: Item { }
     }
 
-    Button {
+    Row {
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        width: 50
-        height: 50
-        visible: Qt.platform.os === "wasm"
-        text: "输入"
+        spacing: 10
 
-        onClicked: {
-            textArea.text = Helper.getWebPrompt( "请输入文本", textArea.text );
+        Button {
+            width: 50
+            height: 50
+            text: "保存"
+
+            onClicked: {
+                Helper.setWebCookie( "Text", textArea.text );
+            }
+        }
+
+        Button {
+            width: 50
+            height: 50
+            text: "读取"
+
+            onClicked: {
+                textArea.text = Helper.getWebCookie( "Text" );
+            }
+        }
+
+        Button {
+            width: 50
+            height: 50
+            visible: Qt.platform.os === "wasm"
+            text: "输入"
+
+            onClicked: {
+                textArea.text = Helper.getWebPrompt( "请输入文本", textArea.text );
+            }
         }
     }
 }

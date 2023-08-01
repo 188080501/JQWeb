@@ -18,6 +18,10 @@ public slots:
     QString versionInfo();
 
     QString getWebPrompt(const QString &title, const QString &text);
+
+    QString getWebCookie(const QString &name);
+
+    void setWebCookie(const QString &name, const QString &value, const int days = 3);
 };
 
 #endif//HELPER_H_
