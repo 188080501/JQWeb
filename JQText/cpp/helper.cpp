@@ -11,11 +11,11 @@
 #endif
 
 #ifdef Q_OS_WASM
-EM_JS(const char*, getWebPromptJS, (const char *titleStr, const char *textStr), {
+EM_JS(char*, getWebPromptJS, (const char *titleStr, const char *textStr), {
     var result = prompt( UTF8ToString( titleStr ), UTF8ToString( textStr ) );
     if ( !result )
     {
-        return "";
+        return null;
     }
 
     var lengthBytes      = lengthBytesUTF8( result ) + 1;
@@ -26,11 +26,11 @@ EM_JS(const char*, getWebPromptJS, (const char *titleStr, const char *textStr), 
     return stringOnWasmHeap;
 });
 
-EM_JS(const char*, getWebCookieJS, (const char *name), {
+EM_JS(char*, getWebCookieJS, (const char *name), {
     var result = document.cookie.match( new RegExp( UTF8ToString( name ) + '=([^;]+)' ) );
     if ( !result )
     {
-        return "";
+        return null;
     }
 
     result = decodeURIComponent( result[ 1 ] );
@@ -63,7 +63,13 @@ QString Helper::versionInfo()
 QString Helper::getWebPrompt(const QString &title, const QString &text)
 {
 #ifdef Q_OS_WASM
-    return getWebPromptJS( title.toUtf8().data(), text.toUtf8().data() );
+    auto resultPtr = getWebPromptJS( title.toUtf8().data(), text.toUtf8().data() );
+    if ( !resultPtr ) { return { }; }
+
+    const QString result = resultPtr;
+    free( reinterpret_cast< void * >( resultPtr ) );
+
+    return result;
 #else
     Q_UNUSED( title );
     return text;
@@ -73,7 +79,13 @@ QString Helper::getWebPrompt(const QString &title, const QString &text)
 QString Helper::getWebCookie(const QString &name)
 {
 #ifdef Q_OS_WASM
-    return QByteArray::fromBase64( getWebCookieJS( name.toUtf8().constData() ) );
+    auto resultPtr = getWebCookieJS( name.toUtf8().constData() );
+    if ( !resultPtr ) { return { }; }
+
+    const QString result = QByteArray::fromBase64( resultPtr );
+    free( reinterpret_cast< void * >( resultPtr ) );
+
+    return result;
 #else
     QSettings settings( "JQWeb", "JQText" );
     return settings.value( name ).toString();
