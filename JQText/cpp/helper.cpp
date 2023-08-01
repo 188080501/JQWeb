@@ -64,7 +64,7 @@ QString Helper::getWebPrompt(const QString &title, const QString &text)
 {
 #ifdef Q_OS_WASM
     auto resultPtr = getWebPromptJS( title.toUtf8().data(), text.toUtf8().data() );
-    if ( !resultPtr ) { return { }; }
+    if ( !resultPtr ) { return text; }
 
     const QString result = resultPtr;
     free( reinterpret_cast< void * >( resultPtr ) );
