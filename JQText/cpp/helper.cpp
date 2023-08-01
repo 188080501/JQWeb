@@ -45,10 +45,10 @@ EM_JS(char*, getWebCookieJS, (const char *name), {
 
 EM_JS(void, setWebCookieJS, (const char *name, const char *value, const int days), {
     var expires = "";
-    if ( days )
+    if ( days > 0 )
     {
         var date = new Date();
-        date.setTime( date.getTime() + (days * 24 * 60 * 60 * 1000) );
+        date.setTime( date.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = UTF8ToString( name ) + "=" + UTF8ToString( value ) + expires + "; path=/";

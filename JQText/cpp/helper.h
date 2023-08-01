@@ -21,7 +21,7 @@ public slots:
 
     QString getWebCookie(const QString &name);
 
-    void setWebCookie(const QString &name, const QString &value, const int days = 3);
+    void setWebCookie(const QString &name, const QString &value, const int days = 7);
 };
 
 #endif//HELPER_H_
