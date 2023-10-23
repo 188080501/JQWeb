@@ -9,3 +9,7 @@ SOURCES += \
 RESOURCES += \
     $$PWD/qml/qml.qrc \
     $$PWD/images/images.qrc
+
+win32-msvc {
+    RC_ICONS = $$PWD/icon/icon.ico
+}
