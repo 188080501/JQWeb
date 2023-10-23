@@ -14,6 +14,7 @@ Window {
         anchors.fill: parent
         anchors.margins: 10
         wrapMode: TextInput.WordWrap
+        selectedTextColor: "#ffffff"
         text:
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aenean euismod bibendum laoreet.
