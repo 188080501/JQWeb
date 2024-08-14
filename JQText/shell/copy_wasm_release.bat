@@ -1,5 +1,5 @@
 cd  %~dp0
-cd "..\..\..\build-JQWeb-WebAssembly_Qt_6_5_*_single_threaded-Release\JQText"
+cd "..\..\build\WebAssembly_Qt_6_8_*_single_threaded-Release\JQText"
 
 ping -n 1 10.0.1.225 >nul
 if %errorlevel%==0 (
