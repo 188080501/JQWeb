@@ -35,7 +35,6 @@ Makefile*
 *build-*
 
 # QtCreator
-
 *.autosave
 *.TMP
 
@@ -50,4 +49,4 @@ CMakeLists.txt.user*
 *.DS_Store
 
 ### build ###
-/build/
+/build
