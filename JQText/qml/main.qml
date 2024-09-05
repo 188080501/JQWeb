@@ -57,15 +57,16 @@ Qt: " + Helper.versionInfo()
             }
         }
 
-        Button {
-            width: 50
-            height: 50
-            visible: Qt.platform.os === "wasm"
-            text: "输入"
+        // 6.7.3 / 6.8.0 开始可以直接输入中文了，因此这段测试代码可以屏蔽了
+        // Button {
+        //     width: 50
+        //     height: 50
+        //     visible: Qt.platform.os === "wasm"
+        //     text: "输入"
 
-            onClicked: {
-                textArea.text = Helper.getWebPrompt( "请输入文本", textArea.text );
-            }
-        }
+        //     onClicked: {
+        //         textArea.text = Helper.getWebPrompt( "请输入文本", textArea.text );
+        //     }
+        // }
     }
 }
