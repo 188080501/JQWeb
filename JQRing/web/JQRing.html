@@ -35,7 +35,7 @@
         <div style="height: calc(50vh - 128px);"></div>
         <img src="favicon.ico" width="128" height="128" style="display:block"></img>
         <div id="qtstatus" style="color: #ffffff"></div>
-        <noscript style="color: #ffffff">JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
+        <noscript style="color: #ffffff">JavaScript未启用，请检查浏览器设置</noscript>
       </center>
     </figure>
     <div id="screen"></div>
@@ -56,7 +56,7 @@
 
             try {
                 showUi(spinner);
-                status.innerHTML = 'Loading...';
+                status.innerHTML = '加载中';
 
                 const instance = await qtLoad({
                     qt: {
