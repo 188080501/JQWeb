@@ -15,7 +15,7 @@ Rectangle {
         opacity = 1;
     }
 
-    Behavior on opacity { NumberAnimation { duration: 1000 } }
+    Behavior on opacity { NumberAnimation { duration: 2000 } }
 
     Item {
         id: ringContains

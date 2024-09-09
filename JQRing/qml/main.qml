@@ -51,6 +51,34 @@ Window {
         }
     }
 
+    Image {
+        id: loadingImage
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        z: -1
+        width: 128
+        height: 128
+        source: "qrc:/images/Loading.png"
+
+        SequentialAnimation {
+            running: true
+
+            NumberAnimation {
+                target: loadingImage
+                property: "opacity"
+                to: 0
+                duration: 1000
+            }
+
+            ScriptAction {
+
+                script: {
+                    loadingImage.destroy();
+                }
+            }
+        }
+    }
+
     Text {
         id: infoLabel
         anchors.left: parent.left

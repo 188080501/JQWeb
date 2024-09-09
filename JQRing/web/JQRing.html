@@ -16,28 +16,23 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <!--Set visual viewport size for mobile devices to the device size,
-        witch results in a scale of 1 and a 1:1 mapping between CSS pixels
-        and Qt device independent pixels. -->
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
-
     <title>JQRing</title>
     <style>
-      /* Make the html body cover the entire (visual) viewport with no scroll bars. */
-      html, body { background-color: #000e27; padding: 0; margin: 0; overflow: hidden; height: 100% }
-      #screen { width: 100%; height: 100%; }
+        html, body { background-color: #000e27; padding: 0; margin: 0; overflow: hidden; height: 100% }
+        #loadingimg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 128px; height: 128px; }
+        #qtspinner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; margin-top: 100px; }
+        #screen { width: 100%; height: 100%; }
     </style>
-  </head>
+    </head>
   <body onload="init()">
-    <figure style="overflow:visible;" id="qtspinner">
-      <center style="margin-top:1.5em; line-height:150%">
-        <div style="height: calc(50vh - 128px);"></div>
-        <img src="favicon.ico" width="128" height="128" style="display:block"></img>
-        <div id="qtstatus" style="color: #ffffff"></div>
+    <img id="loadingimg" src="favicon.ico" style="display:block"></img>
+
+    <figure id="qtspinner">
+        <div id="qtstatus" style="color: #ffffff; text-align: center;" width="500"></div>
         <noscript style="color: #ffffff">JavaScript未启用，请检查浏览器设置</noscript>
-      </center>
     </figure>
+
     <div id="screen"></div>
 
     <script type="text/javascript">
@@ -56,11 +51,15 @@
 
             try {
                 showUi(spinner);
-                status.innerHTML = '加载中';
+                status.innerHTML = '';
 
                 const instance = await qtLoad({
                     qt: {
-                        onLoaded: () => showUi(screen),
+                        onLoaded: () =>
+                        {
+                            showUi(screen);
+                            document.querySelector('#loadingimg').style.display = 'none';
+                        },
                         onExit: exitData =>
                         {
                             status.innerHTML = 'Application exit';
