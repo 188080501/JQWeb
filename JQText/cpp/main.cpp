@@ -12,8 +12,7 @@ int main(int argc, char **argv)
 {
     QGuiApplication app( argc, argv );
 
-    JQWebCommon::initFont( &app );
-    QQuickStyle::setStyle( "Basic" );
+    JQWebCommon::init( &app );
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty( "Helper", new Helper );

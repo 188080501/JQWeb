@@ -9,7 +9,7 @@ class QGuiApplication;
 namespace JQWebCommon
 {
 
-void initFont(QGuiApplication *app);
+void init(QGuiApplication *app);
 
 }
 
