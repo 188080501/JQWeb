@@ -14,12 +14,12 @@
 namespace JQWebCommon
 {
 
+#ifdef Q_OS_WASM
 void messageHandler(
     QtMsgType                 type,
     const QMessageLogContext &context,
     const QString &           log )
 {
-#ifdef Q_OS_WASM
     Q_UNUSED( type );
     Q_UNUSED( context );
 
@@ -37,8 +37,8 @@ void messageHandler(
             EM_ASM({ console.error(UTF8ToString($0)); }, log.toUtf8().constData());
             if (type == QtFatalMsg) { abort(); }
     }
-#endif
 }
+#endif
 
 void init(QGuiApplication *app)
 {
