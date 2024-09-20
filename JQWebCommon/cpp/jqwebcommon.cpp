@@ -59,10 +59,40 @@ void init(QGuiApplication *app)
     QQuickStyle::setStyle( "Basic" );
 }
 
+QMap< QString, QString > urlQueryParser(const QString url)
+{
+    const auto indexForQueryStart = url.indexOf( "?" );
+    if ( indexForQueryStart < 0 ) { return { }; }
+
+    QMap< QString, QString > result;
+
+    auto lines = QUrl::fromEncoded( url.mid( indexForQueryStart + 1 ).toUtf8() ).toString().split( "&" );
+
+    for ( const auto &line_: std::as_const( lines ) )
+    {
+        auto line = line_;
+        line.replace( "%5B", "[" );
+        line.replace( "%5D", "]" );
+        line.replace( "%7B", "{" );
+        line.replace( "%7D", "}" );
+        line.replace( "%5E", "^" );
+        line.replace( "%3A", ":" );
+        line.replace( "%2F", "/" );
+
+        auto indexOf = line.indexOf( "=" );
+        if ( indexOf > 0 )
+        {
+            result[ line.mid( 0, indexOf ) ] = line.mid( indexOf + 1 );
+        }
+    }
+
+    return result;
+}
+
 QString commandLineParser(const QString &key)
 {
 #ifdef Q_OS_WASM
-    return PBCommon::urlQueryParser( emscripten::val::global( "location" )[ "href" ].as<std::string>().c_str() )[ key ];
+    return urlQueryParser( emscripten::val::global( "location" )[ "href" ].as<std::string>().c_str() )[ key ];
 #else
     QCommandLineParser parser;
     parser.parse( qApp->arguments() );

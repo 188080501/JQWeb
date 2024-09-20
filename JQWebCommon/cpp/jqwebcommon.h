@@ -11,6 +11,8 @@ namespace JQWebCommon
 
 void init(QGuiApplication *app);
 
+QMap< QString, QString > urlQueryParser(const QString url);
+
 QString commandLineParser(const QString &key);
 
 }
