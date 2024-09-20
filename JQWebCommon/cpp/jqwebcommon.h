@@ -11,6 +11,8 @@ namespace JQWebCommon
 
 void init(QGuiApplication *app);
 
+QString commandLineParser(const QString &key);
+
 }
 
 #endif//JQWEBCOMMON_H_

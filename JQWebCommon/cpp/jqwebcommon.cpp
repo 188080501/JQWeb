@@ -3,6 +3,7 @@
 // Qt lib import
 #include <QGuiApplication>
 #include <QFontDatabase>
+#include <QCommandLineParser>
 #include <QQuickStyle>
 
 // WASM lib import
@@ -56,6 +57,37 @@ void init(QGuiApplication *app)
     app->setFont( font );
 
     QQuickStyle::setStyle( "Basic" );
+}
+
+QString commandLineParser(const QString &key)
+{
+#ifdef Q_OS_WASM
+    return PBCommon::urlQueryParser( emscripten::val::global( "location" )[ "href" ].as<std::string>().c_str() )[ key ];
+#else
+    QCommandLineParser parser;
+    parser.parse( qApp->arguments() );
+
+    const auto positionalArguments = parser.positionalArguments();
+
+    for ( const auto &argument: positionalArguments )
+    {
+        auto key_ = key + "=";
+
+        if ( argument.startsWith( key_ ) )
+        {
+            return argument.mid( key_.size() );
+        }
+
+        key_ = key + "://";
+
+        if ( argument.startsWith( key_ ) )
+        {
+            return argument.mid( key_.size() );
+        }
+    }
+
+    return { };
+#endif
 }
 
 }
