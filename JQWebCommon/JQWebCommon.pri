@@ -2,6 +2,10 @@ TEMPLATE = app
 
 QT *= core gui qml quick quickcontrols2
 
+CONFIG *= c++11
+CONFIG *= c++14
+CONFIG *= c++17
+
 INCLUDEPATH *= \
     $$PWD/cpp
 
