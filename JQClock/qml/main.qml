@@ -10,6 +10,24 @@ Window {
 
     property real fontSize: window.width * 0.2
 
+    MouseArea {
+        anchors.fill: parent
+
+        property bool flag: false
+
+        onDoubleClicked: {
+            flag = !flag;
+            if ( flag )
+            {
+                Helper.showFullScreen( window );
+            }
+            else
+            {
+                Helper.showNormal( window );
+            }
+        }
+    }
+
     Row {
         anchors.centerIn: parent
         spacing: fontSize * 0.08

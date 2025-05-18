@@ -4,10 +4,11 @@ TARGET = JQClock
 include( $$PWD/../JQWebCommon/JQWebCommon.pri )
 
 HEADERS += \
-    $$PWD/cpp/helper.hpp
+    $$PWD/cpp/helper.h
 
 SOURCES += \
-    $$PWD/cpp/main.cpp
+    $$PWD/cpp/main.cpp \
+    $$PWD/cpp/helper.cpp
 
 RESOURCES += \
     $$PWD/qml/qml.qrc
