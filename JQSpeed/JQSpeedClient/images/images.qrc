@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Download.png</file>
+        <file>Upload.png</file>
+        <file>Latency.png</file>
+        <file>Download@2x.png</file>
+        <file>DownloadProgress.png</file>
+        <file>Latency@2x.png</file>
+        <file>Upload@2x.png</file>
+        <file>UploadProgress.png</file>
+    </qresource>
+</RCC>

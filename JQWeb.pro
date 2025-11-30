@@ -3,3 +3,4 @@ TEMPLATE = subdirs
 SUBDIRS += JQClock
 SUBDIRS += JQRing
 SUBDIRS += JQText
+SUBDIRS += JQSpeed
