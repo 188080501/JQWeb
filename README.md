@@ -44,7 +44,7 @@
 
 一个简易的网络速度测试工具，基于WebSocket连接测试，方便测试局域网/广域网的网络连接质量
 
-在线访问地址：http://web.jasonserver.com:10036/JQSpeed/JQSpeed.html?serverHost=speed.jasonserver.com
+在线访问地址：https://web.jasonserver.com:10035/JQSpeed/JQSpeed.html?serverUrl=wss%3A%2F%2Fspeed.jasonserver.com%3A15056
 
 ![](./doc/JQSpeed.png)
 

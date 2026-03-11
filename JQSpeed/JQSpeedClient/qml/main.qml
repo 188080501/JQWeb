@@ -10,7 +10,7 @@ Window {
     color: "#131a24"
 
     Rectangle {
-        id: serverHostContains
+        id: serverUrlContains
         width: 300
         height: 85
         anchors.horizontalCenter: parent.horizontalCenter
@@ -26,13 +26,13 @@ Window {
             y: 20
             color: "#ffffff"
             font.pixelSize: 18
-            text: Helper.serverHost
+            text: Helper.serverUrl
         }
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             y: 50
-            color: serverHostContains.border.color
+            color: serverUrlContains.border.color
             font.pixelSize: 14
             text: ( Helper.isConnected ) ? ( "已连接" ) : ( "连接中" )
         }
@@ -40,7 +40,7 @@ Window {
 
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: serverHostContains.bottom
+        anchors.top: serverUrlContains.bottom
         anchors.topMargin: 40
         spacing: 20
 

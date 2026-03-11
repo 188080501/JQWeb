@@ -10,7 +10,7 @@ class Helper: public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY( QString serverHost READ serverHost WRITE setServerHost NOTIFY serverHostChanged )
+    Q_PROPERTY( QString serverUrl READ serverUrl WRITE setServerUrl NOTIFY serverUrlChanged )
 
     Q_PROPERTY( bool isConnected READ isConnected WRITE setIsConnected NOTIFY isConnectedChanged )
     Q_PROPERTY( bool isMeasuringSpeed READ isMeasuringSpeed WRITE setIsMeasuringSpeed NOTIFY isMeasuringSpeedChanged )
@@ -48,10 +48,10 @@ private:
     int binaryReceivedCounter_ = 0;
 
     // Property statement code start
-private: QString serverHost_;
-public: inline QString serverHost() const;
-public: inline void setServerHost(const QString &newValue);
-    Q_SIGNAL void serverHostChanged(const QString serverHost);
+private: QString serverUrl_;
+public: inline QString serverUrl() const;
+public: inline void setServerUrl(const QString &newValue);
+    Q_SIGNAL void serverUrlChanged(const QString serverUrl);
 
 private: bool isConnected_ = false;
 public: inline bool isConnected() const;
@@ -92,10 +92,10 @@ private:
 };
 
 // Property accomplish code start
-inline QString Helper::serverHost() const
-{ return serverHost_; }
-inline void Helper::setServerHost(const QString &newValue)
-{ if ( newValue == serverHost_ ) { return; } serverHost_ = newValue; emit serverHostChanged( serverHost_ ); }
+inline QString Helper::serverUrl() const
+{ return serverUrl_; }
+inline void Helper::setServerUrl(const QString &newValue)
+{ if ( newValue == serverUrl_ ) { return; } serverUrl_ = newValue; emit serverUrlChanged( serverUrl_ ); }
 
 inline bool Helper::isConnected() const
 { return isConnected_; }

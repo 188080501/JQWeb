@@ -27,18 +27,24 @@ Helper::Helper()
 
     QTimer::singleShot( 0, this, &Helper::onCheck );
 
+    QString serverUrl;
+
 #ifdef Q_OS_WASM
-    this->setServerHost( QUrl( emscripten::val::global( "location" )[ "href" ].as<std::string>().c_str() ).host() );
+    serverUrl = QString( "wss://%1:%2" ).arg(
+                           QUrl( emscripten::val::global( "location" )[ "href" ].as<std::string>().c_str() ).host(),
+                           QString::number( defaultWebSocketPort ) );
 #else
-    this->setServerHost( "127.0.0.1" );
+    serverUrl = QString( "ws://127.0.0.1:%1" ).arg( QString::number( defaultWebSocketPort ) );
 #endif
 
-    if ( const auto host = JQWebCommon::commandLineParser( "serverHost" ); !host.isEmpty() )
+    if ( const auto url = QUrl::fromPercentEncoding( JQWebCommon::commandLineParser( "serverUrl" ).toUtf8() ); !url.isEmpty() )
     {
-        this->setServerHost( host );
+        serverUrl = url;
     }
 
-    qDebug() << "serverHost:" << this->serverHost();
+    this->setServerUrl( serverUrl );
+
+    qDebug() << "serverUrl:" << this->serverUrl();
 }
 
 void Helper::startMeasureDownloadSpeed()
@@ -87,7 +93,7 @@ void Helper::onCheck()
 {
     if ( socket_.state() == QAbstractSocket::UnconnectedState )
     {
-        socket_.open( QUrl( QString( "ws://%1:%2" ).arg( this->serverHost(), QString::number( defaultWebSocketPort ) ) ) );
+        socket_.open( QUrl( this->serverUrl() ) );
     }
     else if ( socket_.state() == QAbstractSocket::ConnectedState )
     {
