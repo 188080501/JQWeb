@@ -2,7 +2,7 @@
 
 一些基于WASM的迷你项目，仅供娱乐和供WASM初学者参考
 
-目前只在Qt6.5/Qt6.7版本中进行测试，开发环境是Windows
+目前只在 ```Qt 6.8.3 wasm single threaded``` 版本中进行测试，开发环境是Windows
 
 相比Qt的标准WASM产物，本项目做了以下修改：
 
